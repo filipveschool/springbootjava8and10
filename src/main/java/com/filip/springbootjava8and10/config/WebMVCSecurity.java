@@ -37,6 +37,12 @@ public class WebMVCSecurity extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
+
+        http.authorizeRequests().antMatchers("/h2_console/**").permitAll();
         http.authorizeRequests().anyRequest().authenticated().and().httpBasic();
+        //for h2
+        http.csrf().disable();
+        http.headers().frameOptions().disable();
     }
 }

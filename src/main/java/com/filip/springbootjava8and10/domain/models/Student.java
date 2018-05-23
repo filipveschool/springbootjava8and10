@@ -6,13 +6,13 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "students")
+@Table(name = "Students")
 public class Student implements Serializable {
 
     private static final long serialVersionUID = -8582553475226281591L;
 
-    @NotNull(message = "Student ID is required.")
-    @Min(value = 1000, message = "Student ID must be at least 4 digits.")
+    //@NotNull(message = "Student ID is required.")
+    //@Min(value = 1000, message = "Student ID must be at least 4 digits.")
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "id")
