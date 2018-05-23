@@ -1,0 +1,1 @@
+insert into student(name, gender, percentage) values('filip vanden eynde', 'M', 25);

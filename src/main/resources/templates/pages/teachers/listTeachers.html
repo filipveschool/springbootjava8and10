@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default}">
+<head>
+    <title>Teacher List</title>
+</head>
+<body>
+<section layout:fragment="app-content" class="container">
+
+    <h1>Teacher List</h1>
+    <table border="1" class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th th:text="#{msg.id}" scope="col"/>
+            <th th:text="#{msg.name}" scope="col"/>
+            <th th:text="#{msg.gender}" scope="col"/>
+            <th th:text="#{msg.active}" scope="col"/>
+            <th th:text="#{msg.courses}" scope="col"/>
+            <th th:text="#{msg.skills}" scope="col"/>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="teacher: ${teachers}">
+            <td th:text="${teacher.id}"/>
+            <td th:text="${{teacher.name}}"/>
+
+            <td><span th:if="${teacher.gender == 'F'}">Female</span> <span
+                    th:unless="${teacher.gender == 'F'}">Male</span></td>
+
+            <td th:text="${teacher.active} ? 'ACTIVE' : 'RETIRED'"/>
+
+            <td th:switch="${#lists.size(teacher.courses)}"><span
+                    th:case="'0'">NO COURSES YET!</span> <span th:case="'1'"
+                                                               th:text="${teacher.courses[0]}"></span>
+                <div th:case="*">
+                    <div th:each="course: ${teacher.courses}" th:text="${course}"></div>
+                </div>
+            </td>
+
+            <td th:text="*{teacher.additionalSkills}?: 'UNKNOWN'"/>
+        </tr>
+        </tbody>
+    </table>
+    <div>
+        <p>
+            <a class="btn btn-raised btn-primary" th:href="@{/}" th:text="#{msg.Home}"/>
+        </p>
+    </div>
+
+</section>
+
+</body>
+</html>

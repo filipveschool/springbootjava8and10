@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>footer</title>
+</head>
+<body>
+
+<footer class="app-footer" th:fragment="footer">
+    <p layout:fragment="app-footer">C O O L. footer in footer/default.html</p>
+    <p>Current time is <span th:text="${#dates.format(#dates.createNow(), 'dd MMM yyyy HH:mm')}" /></p>
+</footer>
+
+</body>
+</html>
